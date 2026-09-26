@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 FILES_TO_TABLES = {
+    "olist_customers_dataset.csv": "CUSTOMERS",
     "olist_orders_dataset.csv": "ORDERS",
     "olist_order_items_dataset.csv": "ORDER_ITEMS",
     "olist_order_payments_dataset.csv": "ORDER_PAYMENTS",

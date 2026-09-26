@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_order_reviews
+    columns:
+      - name: review_id
+        data_tests:
+          - not_null
+
+      - name: order_id
+        data_tests:
+          - not_null

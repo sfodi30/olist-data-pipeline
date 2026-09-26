@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimension produits, une ligne par produit."
+
+    columns:
+      - name: product_id
+        description: "Identifiant unique du produit."
+        data_tests:
+          - not_null
+          - unique

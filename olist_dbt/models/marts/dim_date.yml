@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Dimension calendrier, une ligne par jour."
+
+    columns:
+      - name: date_day
+        description: "Date unique du calendrier."
+        data_tests:
+          - not_null
+          - unique

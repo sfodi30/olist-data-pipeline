@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dim_sellers
+    description: "Dimension vendeurs, une ligne par vendeur."
+
+    columns:
+      - name: seller_id
+        description: "Identifiant unique du vendeur."
+        data_tests:
+          - not_null
+          - unique

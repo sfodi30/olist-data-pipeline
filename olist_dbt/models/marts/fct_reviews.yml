@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_reviews
+    description: "Table de faits des avis clients, une ligne par avis associé à une commande."
+
+    columns:
+      - name: review_id
+        data_tests:
+          - not_null
+
+      - name: order_id
+        data_tests:
+          - not_null
+
+      - name: customer_unique_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_unique_id
+
+      - name: date_day
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day

@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_order_items
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
+
+      - name: order_item_id
+        data_tests:
+          - not_null

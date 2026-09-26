@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_geolocation_by_zip
+    description: "Géolocalisation agrégée au niveau du préfixe de code postal."
+
+    columns:
+      - name: geolocation_zip_code_prefix
+        description: "Préfixe du code postal."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: latitude
+        description: "Latitude moyenne du préfixe de code postal."
+        data_tests:
+          - not_null
+
+      - name: longitude
+        description: "Longitude moyenne du préfixe de code postal."
+        data_tests:
+          - not_null

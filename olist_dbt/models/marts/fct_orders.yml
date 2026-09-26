@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Table de faits des commandes, une ligne par commande."
+
+    columns:
+      - name: order_id
+        description: "Identifiant unique de la commande."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_unique_id
+        description: "Identifiant unique du client."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_unique_id
+
+      - name: date_day
+        description: "Date de passage de la commande."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day

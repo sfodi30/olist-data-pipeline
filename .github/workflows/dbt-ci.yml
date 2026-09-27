@@ -1,0 +1,47 @@
+name: dbt CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dbt-build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: olist_dbt
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer dbt
+        run: pip install dbt-snowflake==1.12.0
+      
+      - name: Créer le profil dbt
+        run: |
+          cat > profiles.yml << 'EOF'
+          olist_dbt:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: "${{ secrets.SNOWFLAKE_ACCOUNT }}"
+                user: "${{ secrets.SNOWFLAKE_USER }}"
+                password: "${{ secrets.SNOWFLAKE_PASSWORD }}"
+                warehouse: "${{ secrets.SNOWFLAKE_WAREHOUSE }}"
+                database: "${{ secrets.SNOWFLAKE_DATABASE }}"
+                schema: "${{ secrets.SNOWFLAKE_SCHEMA }}"
+                threads: 4
+          EOF
+
+      - name: Exécuter dbt build
+        run: dbt build --profiles-dir .
+        

@@ -38,6 +38,7 @@ jobs:
                 password: "${{ secrets.SNOWFLAKE_PASSWORD }}"
                 warehouse: "${{ secrets.SNOWFLAKE_WAREHOUSE }}"
                 database: "${{ secrets.SNOWFLAKE_DATABASE }}"
+                role: "${{ secrets.SNOWFLAKE_ROLE }}"
                 schema: "${{ secrets.SNOWFLAKE_SCHEMA }}"
                 threads: 4
           EOF

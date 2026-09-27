@@ -325,6 +325,8 @@ Les informations sensibles ne sont pas versionnées :
 profiles.yml
 ```
 
+Les connexions du pipeline utilisent un rôle Snowflake dédié (`OLIST_ROLE`) selon le principe du moindre privilège.
+
 La CI utilise les GitHub Secrets pour transmettre les informations de connexion à Snowflake au moment de l'exécution.
 
 ## Améliorations possibles
@@ -334,7 +336,6 @@ Le projet peut être étendu avec :
 - séparation des environnements Snowflake CI / production ;
 - déploiement continu après fusion dans `main` ;
 - source freshness dbt ;
-- rôle Snowflake dédié avec principe du moindre privilège ;
 - stockage des fichiers sources dans un object storage cloud ;
 - orchestration planifiée du pipeline ;
 - monitoring et alerting du pipeline.

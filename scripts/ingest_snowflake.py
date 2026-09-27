@@ -23,6 +23,7 @@ conn = snowflake.connector.connect(
     password=os.getenv("SNOWFLAKE_PASSWORD"),
     warehouse=os.getenv("SNOWFLAKE_WAREHOUSE"),
     database=os.getenv("SNOWFLAKE_DATABASE"),
+    role=os.getenv("SNOWFLAKE_ROLE"),
     schema=os.getenv("SNOWFLAKE_SCHEMA"),
 )
 
